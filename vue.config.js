@@ -12,7 +12,8 @@ module.exports = {
     productionSourceMap: !IS_PROD, // 生产环境的 source map
     parallel: require("os").cpus().length > 1, // 是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。
     pwa: {}, // 向 PWA 插件传递选项。
-    configureWebpack: config => { // webpack配置，值位对象时会合并配置，为方法时会改写配置      
+    configureWebpack: config => {
+        // webpack配置，值位对象时会合并配置，为方法时会改写配置
         // 开启 gzip 压缩
         // 需要 npm i -D compression-webpack-plugin
         const plugins = [];
@@ -66,26 +67,16 @@ module.exports = {
         open: false, //配置自动启动浏览器
         hotOnly: true, // 热更新
         // proxy: 'http://localhost:8080'   // 配置跨域处理,只有一个代理
-        proxy: {
-            //配置多个跨域
-            "/api": {
-                target: "http://172.11.11.11:7071",
-                changeOrigin: true,
-                // ws: true,//websocket支持
-                secure: false,
+        proxy: { // 开发环境代理配置
+            '/dev-api': { // 意思是当请求是以 /dev-api 开头的请求，都走代理
+                // 目标服务器地址，代理访问：http://localhost:8001
+                target: 'http://www.web-jshtml.cn/productApi',
+                changeOrigin: true, // 开启代理服务器，就会给你代理转发
                 pathRewrite: {
-                    "^/api": "/"
-                }
-            },
-            "/api2": {
-                target: "http://172.12.12.12:2018",
-                changeOrigin: true,
-                //ws: true,//websocket支持
-                secure: false,
-                pathRewrite: {
-                    "^/api2": "/"
+                    // /dev-api/db.json 最终会转发到 http://localhost:8001/db.json
+                    '^/dev-api': '', // 就是将请求地址中的 //dev-api 前缀替换成空的
                 }
             }
         }
-    }
+    },
 };
