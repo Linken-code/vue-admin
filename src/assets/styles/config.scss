@@ -1,0 +1,23 @@
+//后台框架尺寸
+//菜单宽度
+$navMenu:250px;
+$navMenuMin:64px;
+$layoutHeader :75px;
+$mainColor:#f56c6c;
+.close {
+    .el-menu {
+        .el-submenu {
+            &.is-active {
+                .el-submenu__title {
+                    background-color: $mainColor !important;
+                }
+            }
+        }
+    }
+}
+
+.el-menu--vertical {
+    .el-menu-item {
+        background-color: $mainColor !important;
+    }
+}

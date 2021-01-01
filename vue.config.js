@@ -47,7 +47,7 @@ module.exports = {
     },
     css: {
         extract: IS_PROD,
-        requireModuleExtension: false, // 去掉文件名中的 .module
+        requireModuleExtension: true, // 去掉文件名中的 .module
         loaderOptions: {
             // 给 less-loader 传递 Less.js 相关选项
             sass: {
@@ -61,22 +61,25 @@ module.exports = {
             warnings: true,
             errors: true
         },
-        host: "localhost",
+        host: '0.0.0.0', //默认localhost，0.0.0.0代表可以被外界访问
         port: 8080, // 端口号
         https: false, // https:{type:Boolean}
         open: false, //配置自动启动浏览器
-        hotOnly: true, // 热更新
+        hot: true, //开启热加载
+        hotOnly: false, // 热更新
         // proxy: 'http://localhost:8080'   // 配置跨域处理,只有一个代理
-        proxy: { // 开发环境代理配置
-            '/dev-api': { // 意思是当请求是以 /dev-api 开头的请求，都走代理
+        proxy: {
+            // 开发环境代理配置
+            "/devapi": {
+                // 意思是当请求是以 /dev-api 开头的请求，都走代理
                 // 目标服务器地址，代理访问：http://localhost:8001
-                target: 'http://www.web-jshtml.cn/productApi',
+                target: "http://www.web-jshtml.cn/productapi/token",
                 changeOrigin: true, // 开启代理服务器，就会给你代理转发
                 pathRewrite: {
                     // /dev-api/db.json 最终会转发到 http://localhost:8001/db.json
-                    '^/dev-api': '', // 就是将请求地址中的 //dev-api 前缀替换成空的
+                    "^/devapi": "" // 就是将请求地址中的 //dev-api 前缀替换成空的
                 }
             }
         }
-    },
+    }
 };
