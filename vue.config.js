@@ -73,7 +73,7 @@ module.exports = {
             "/devapi": {
                 // 意思是当请求是以 /dev-api 开头的请求，都走代理
                 // 目标服务器地址，代理访问：http://localhost:8001
-                target: "http://www.web-jshtml.cn/productapi/token",
+                target: "http://www.web-jshtml.cn/productapi",
                 changeOrigin: true, // 开启代理服务器，就会给你代理转发
                 pathRewrite: {
                     // /dev-api/db.json 最终会转发到 http://localhost:8001/db.json

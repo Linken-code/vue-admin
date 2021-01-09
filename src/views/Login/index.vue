@@ -12,11 +12,11 @@
       <el-form :model="ruleForm"
                status-icon
                :rules="rules"
-               ref="loginFrom"
-               class="login-From"
+               ref="loginForm"
+               class="login-Form"
                size="medium ">
         <el-form-item prop="username"
-                      class="item-From">
+                      class="item-Form">
           <label for="username">邮箱</label>
           <el-input type="text"
                     v-model="ruleForm.username"
@@ -59,7 +59,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="danger"
-                     @click="submitForm('loginFrom')"
+                     @click="submitForm('loginForm')"
                      class="block login-btn"
                      :disabled="loginButtonStatus">{{model ==='login'?"登录":"注册"}}</el-button>
         </el-form-item>
@@ -216,7 +216,7 @@ export default {
       //修改模块值
       this.model = item.type
       //清除表单数据
-      this.$refs.loginFrom.resetFields();
+      this.$refs.loginForm.resetFields();
       //清除定时器
       this.clearCount()
 
@@ -349,7 +349,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.1);
   }
 }
-.login-From {
+.login-Form {
   margin-top: 29px;
   label {
     display: block;
@@ -357,7 +357,7 @@ export default {
     font-size: 14px;
     color: #fff;
   }
-  .item-From {
+  .item-Form {
     margin-bottom: 13px;
   }
   .block {

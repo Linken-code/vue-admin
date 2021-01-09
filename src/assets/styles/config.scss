@@ -21,3 +21,14 @@ $mainColor:#f56c6c;
         background-color: $mainColor !important;
     }
 }
+
+//dialog样式
+.el-dialog {
+    width: 40% !important;
+    .el-dialog__body {
+        padding: 30px 80px 30px 20px;
+    }
+    .el-textarea>.el-textarea__inner {
+        height: 120px;
+    }
+}

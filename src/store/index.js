@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        isCollapse: JSON.parse(sessionStorage.getItem('isCollapse')) || false,
+        isCollapse: false || JSON.parse(sessionStorage.getItem('isCollapse')),
         token: '',
         username: getUserName() || ''
     },
