@@ -85,7 +85,7 @@
       </el-table-column>
       <el-table-column prop="date"
                        label="日期"
-                       width="240"
+                       width="150"
                        align="center">
       </el-table-column>
       <el-table-column prop="user"
@@ -102,6 +102,11 @@
           <el-button size="mini"
                      type="success"
                      @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          <!-- <router-link :to="{name:'InfoDetails'}"> -->
+          <el-button size="mini"
+                     type="success"
+                     @click="handleDetails(scope.row)">编辑详情</el-button>
+          <!-- </router-link> -->
         </template>
       </el-table-column>
     </el-table>
@@ -110,7 +115,6 @@
                     :categoryEdit="categoryEdit"
                     :options="options"
                     :getListEdit="getlist" />
-
     <!-- 分页 -->
     <el-row class="space">
       <el-col :span="9">
@@ -241,6 +245,15 @@ export default {
     handleEdit (index, row) {
       this.dialogEdit = true;
       this.categoryEdit = row;
+    },
+    handleDetails (row) {
+      //页面跳转到控制台,密文传参params,参数不公开，刷新后参数消失.明文传参query则相反
+      this.$router.push({
+        name: 'InfoDetails',
+        params: {
+          data: row
+        }
+      })
     },
     handleDelete (row) {
       this.categoryid = [row.category]

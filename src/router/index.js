@@ -54,24 +54,36 @@ const routes = [{
         // which is lazy-loaded when the route is visited.懒加载
         component: Layout,
         children: [{
-            path: "/infoIndex",
-            name: "InfoIndex",
-            meta: {
-                name: "信息列表",
-                icon: 'el-icon-chat-line-square'
+                path: "/infoIndex",
+                name: "InfoIndex",
+                meta: {
+                    name: "信息列表",
+                    icon: 'el-icon-chat-line-square'
+                },
+                component: () =>
+                    import ("../views/Info/index.vue")
             },
-            component: () =>
-                import ("../views/Info/index.vue")
-        }, {
-            path: "/infoCategory",
-            name: "InfoCategory",
-            meta: {
-                name: "信息分类",
-                icon: 'el-icon-document'
+            {
+                path: "/infoCategory",
+                name: "InfoCategory",
+                meta: {
+                    name: "信息分类",
+                    icon: 'el-icon-document'
+                },
+                component: () =>
+                    import ("../views/Info/category.vue")
             },
-            component: () =>
-                import ("../views/Info/category.vue")
-        }]
+            {
+                path: "/infoDetails",
+                name: "InfoDetails",
+                meta: {
+                    name: "信息详情",
+                    icon: 'el-icon-document'
+                },
+                component: () =>
+                    import ("../views/Info/infodetails.vue")
+            }
+        ]
     },
     {
         path: "/user",
