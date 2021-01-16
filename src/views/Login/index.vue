@@ -139,7 +139,11 @@ export default {
   mounted () {
 
   },
-
+  beforeDestroy () {
+    if (this.timer) {
+      clearInterval(this.timer)
+    }
+  },
   //写函数的地方
   methods: {
     //修改获取验证按钮状态
