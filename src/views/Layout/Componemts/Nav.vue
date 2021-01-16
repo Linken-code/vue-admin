@@ -1,18 +1,9 @@
 <template>
   <div id="nav-wrap">
-    <h1 class="logo"> <img src="../../../assets/logo.png"
-           alt=""></h1>
-    <el-menu default-active="1-4-1"
-             class="el-menu-vertical-demo"
-             :collapse="isCollapse"
-             background-color="transparent"
-             text-color="#fff"
-             active-text-color="#409EFF"
-             router>
+    <h1 class="logo"> <img src="../../../assets/logo.png" alt=""></h1>
+    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" :collapse="isCollapse" background-color="transparent" text-color="#fff" active-text-color="#409EFF" router>
       <template v-for="(item,index) in routers">
-        <el-submenu v-if="!item.hidden"
-                    :key="item.id"
-                    :index="index+ ''">
+        <el-submenu v-if="!item.hidden" :key="item.id" :index="index+ ''">
           <!-- 一级菜单 -->
           <template slot="title">
             <i :class="item.meta.icon"></i>
@@ -20,8 +11,7 @@
           </template>
           <!-- 二级菜单 -->
           <template v-for="subItem in item.children">
-            <el-menu-item :key="subItem.id"
-                          :index="subItem.path">
+            <el-menu-item :key="subItem.id" :index="subItem.path">
               <i :class="subItem.meta.icon"></i>
               {{subItem.meta.name}}
             </el-menu-item>

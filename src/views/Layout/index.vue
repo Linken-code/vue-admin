@@ -1,6 +1,5 @@
 <template>
-  <div id="layout"
-       :class="[menuSatus?'close':'open']">
+  <div id="layout" :class="[menuSatus?'close':'open']">
     <LayoutHeader />
     <LayoutMain />
     <LayoutNav />

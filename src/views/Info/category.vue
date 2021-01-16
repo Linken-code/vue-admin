@@ -1,55 +1,29 @@
 <template>
   <div id="category">
-    <el-button type="danger"
-               @click="addCategory({type:'add'})">添加一级分类</el-button>
+    <el-button type="danger" @click="addCategory({type:'add'})">添加一级分类</el-button>
     <div>
       <el-row :gutter="30">
         <el-col :span="9">
-          <div class="category"
-               v-for="item in Category"
-               :key="item.id">
+          <div class="category" v-for="item in Category" :key="item.id">
             <h4>
               <!-- 一级分类 -->
-              <el-button type="primary"
-                         size="mini"
-                         circle><i class="el-icon-plus"></i></el-button>
+              <el-button type="primary" size="mini" circle><i class="el-icon-plus"></i></el-button>
               {{item.CategoryName}}
               <div class="button-group">
                 <el-button-group>
-                  <el-button type="primary"
-                             icon="el-icon-edit"
-                             size="mini"
-                             round
-                             @click="editCategory({data:item,type:'firstEdit'})">编辑</el-button>
-                  <el-button type="primary"
-                             icon="el-icon-circle-plus"
-                             size="mini"
-                             round
-                             @click="AddChildren({data:item,type:'secondEdit'})">添加子级</el-button>
-                  <el-button type="primary"
-                             icon="el-icon-delete"
-                             size="mini"
-                             round
-                             @click="deleteCategory(item.id)">删除</el-button>
+                  <el-button type="primary" icon="el-icon-edit" size="mini" round @click="editCategory({data:item,type:'firstEdit'})">编辑</el-button>
+                  <el-button type="primary" icon="el-icon-circle-plus" size="mini" round @click="AddChildren({data:item,type:'secondEdit'})">添加子级</el-button>
+                  <el-button type="primary" icon="el-icon-delete" size="mini" round @click="deleteCategory(item.id)">删除</el-button>
                 </el-button-group>
               </div>
             </h4>
             <!-- 二级分类 -->
             <ul v-if="item.Children">
-              <li v-for="children in item.Children"
-                  :key="children.id">{{children.CategoryName}}
+              <li v-for="children in item.Children" :key="children.id">{{children.CategoryName}}
                 <div class="button-group">
                   <el-button-group>
-                    <el-button type="primary"
-                               icon="el-icon-edit"
-                               size="mini"
-                               round
-                               @click="editCategory({data:children,type:'secondEdit'})">编辑</el-button>
-                    <el-button type="primary"
-                               icon="el-icon-delete"
-                               size="mini"
-                               round
-                               @click="deleteCategory(children.id)">删除</el-button>
+                    <el-button type="primary" icon="el-icon-edit" size="mini" round @click="editCategory({data:children,type:'secondEdit'})">编辑</el-button>
+                    <el-button type="primary" icon="el-icon-delete" size="mini" round @click="deleteCategory(children.id)">删除</el-button>
                   </el-button-group>
                 </div>
               </li>
@@ -58,29 +32,15 @@
         </el-col>
         <el-col :span="15">
           <h4 class="menu-title">一级分类编辑</h4>
-          <el-form :label-position="labelPosition"
-                   label-width="140px"
-                   class="fromwidth"
-                   ref="categoryForm"
-                   :model="categoryForm">
-            <el-form-item label="一级分类名称:"
-                          v-if="CategoryShow.first"
-                          prop="CategoryName">
-              <el-input v-model="categoryForm.CategoryName"
-                        :disabled="categoryForm.disabled"></el-input>
+          <el-form :label-position="labelPosition" label-width="140px" class="fromwidth" ref="categoryForm" :model="categoryForm">
+            <el-form-item label="一级分类名称:" v-if="CategoryShow.first" prop="CategoryName">
+              <el-input v-model="categoryForm.CategoryName" :disabled="categoryForm.disabled"></el-input>
             </el-form-item>
-            <el-form-item label="二级分类名称:"
-                          v-if="CategoryShow.second"
-                          prop="ChildrenCategory">
-              <el-input v-model="categoryForm.ChildrenCategory"
-                        :disabled="categoryForm.ChildrenDisabled"></el-input>
+            <el-form-item label="二级分类名称:" v-if="CategoryShow.second" prop="ChildrenCategory">
+              <el-input v-model="categoryForm.ChildrenCategory" :disabled="categoryForm.ChildrenDisabled"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="danger"
-                         @click="submitForm('categoryForm')"
-                         size="mini"
-                         :loading="button_loading"
-                         :disabled="submit_disabled">提交</el-button>
+              <el-button type="danger" @click="submitForm('categoryForm')" size="mini" :loading="button_loading" :disabled="submit_disabled">提交</el-button>
             </el-form-item>
           </el-form>
         </el-col>

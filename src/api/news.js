@@ -63,3 +63,19 @@ export function SendEditCategory(data) {
         data: data
     });
 }
+//用户列表
+export function getUserList(data) {
+    return service.request({
+        method: "post",
+        url: "/user/getList/",
+        data: data
+    });
+}
+//地区列表
+export function GetCity(data) {
+    return service.request({
+        method: "post",
+        url: "/cityPicker/",
+        data: data
+    });
+}

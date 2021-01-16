@@ -1,7 +1,6 @@
 <template>
   <div id="header-wrap">
-    <div class="left icon"
-         @click="navMenuState"><i class="el-icon-tickets"></i></div>
+    <div class="left icon" @click="navMenuState"><i class="el-icon-tickets"></i></div>
     <div class="right icon">
       <div class="user-info">{{username}}</div>
       <div @click="exit"><i class="el-icon-switch-button"></i></div>

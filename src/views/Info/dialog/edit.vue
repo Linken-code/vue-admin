@@ -1,44 +1,22 @@
 <template>
   <div>
-    <el-dialog title="修改"
-               :visible.sync="addFormVisible"
-               @close="close('form')"
-               @open="open">
-      <el-form :model="form"
-               ref="form">
-        <el-form-item label="类型:"
-                      :label-width="formLabelWidth"
-                      prop="options">
-          <el-select v-model="form.options"
-                     placeholder="请选择类型">
-            <el-option :label="item.label"
-                       :value="item.value"
-                       v-for="item in categoryOptions"
-                       :key="item.id"></el-option>
+    <el-dialog title="修改" :visible.sync="addFormVisible" @close="close('form')" @open="open">
+      <el-form :model="form" ref="form">
+        <el-form-item label="类型:" :label-width="formLabelWidth" prop="options">
+          <el-select v-model="form.options" placeholder="请选择类型">
+            <el-option :label="item.label" :value="item.value" v-for="item in categoryOptions" :key="item.id"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="标题:"
-                      :label-width="formLabelWidth"
-                      prop="name">
-          <el-input v-model="form.name"
-                    autocomplete="off"
-                    placeholder="请输入标题"></el-input>
+        <el-form-item label="标题:" :label-width="formLabelWidth" prop="name">
+          <el-input v-model="form.name" autocomplete="off" placeholder="请输入标题"></el-input>
         </el-form-item>
-        <el-form-item label="概况:"
-                      :label-width="formLabelWidth"
-                      prop="content">
-          <el-input v-model="form.content"
-                    autocomplete="off"
-                    type="textarea"
-                    placeholder="请输入内容"></el-input>
+        <el-form-item label="概况:" :label-width="formLabelWidth" prop="content">
+          <el-input v-model="form.content" autocomplete="off" type="textarea" placeholder="请输入内容"></el-input>
         </el-form-item>
       </el-form>
-      <div slot="footer"
-           class="dialog-footer">
+      <div slot="footer" class="dialog-footer">
         <el-button @click="close('form')">取 消</el-button>
-        <el-button type="primary"
-                   @click="submit('form')"
-                   :loading="submitLoading">确 定</el-button>
+        <el-button type="primary" @click="submit('form')" :loading="submitLoading">确 定</el-button>
       </div>
     </el-dialog>
   </div>

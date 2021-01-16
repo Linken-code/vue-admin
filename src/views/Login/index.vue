@@ -3,43 +3,21 @@
     <!--内容区-->
     <div class="login-warp">
       <ul class="menu-tab">
-        <li v-for="item in menuTab"
-            :key="item.id"
-            :class="{current:item.current}"
-            @click="toggleMenu(item)">{{item.txt}}</li>
+        <li v-for="item in menuTab" :key="item.id" :class="{current:item.current}" @click="toggleMenu(item)">{{item.txt}}</li>
       </ul>
       <!--表单区-->
-      <el-form :model="ruleForm"
-               status-icon
-               :rules="rules"
-               ref="loginForm"
-               class="login-Form"
-               size="medium ">
-        <el-form-item prop="username"
-                      class="item-Form">
+      <el-form :model="ruleForm" status-icon :rules="rules" ref="loginForm" class="login-Form" size="medium ">
+        <el-form-item prop="username" class="item-Form">
           <label for="username">邮箱</label>
-          <el-input type="text"
-                    v-model="ruleForm.username"
-                    autocomplete="off"
-                    id="username"></el-input>
+          <el-input type="text" v-model="ruleForm.username" autocomplete="off" id="username"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <label for="password">密码</label>
-          <el-input type="password"
-                    v-model="ruleForm.password"
-                    autocomplete="off"
-                    minlength="6"
-                    maxlength="16"
-                    id="password"></el-input>
+          <el-input type="password" v-model="ruleForm.password" autocomplete="off" minlength="6" maxlength="16" id="password"></el-input>
         </el-form-item>
-        <el-form-item prop="passwords"
-                      v-show="model==='register'">
+        <el-form-item prop="passwords" v-show="model==='register'">
           <label>重复密码</label>
-          <el-input type="password"
-                    v-model="ruleForm.passwords"
-                    autocomplete="off"
-                    minlength="6"
-                    maxlength="16"></el-input>
+          <el-input type="password" v-model="ruleForm.passwords" autocomplete="off" minlength="6" maxlength="16"></el-input>
         </el-form-item>
         <el-form-item prop="code">
           <label>验证码</label>
@@ -48,20 +26,12 @@
               <el-input v-model="ruleForm.code"></el-input>
             </el-col>
             <el-col :span="9">
-              <el-button type="success"
-                         class="block"
-                         minlength="6"
-                         maxlength="6"
-                         @click="getSms()"
-                         :disabled="codeButtonStatus.Status">{{codeButtonStatus.Text}}</el-button>
+              <el-button type="success" class="block" minlength="6" maxlength="6" @click="getSms()" :disabled="codeButtonStatus.Status">{{codeButtonStatus.Text}}</el-button>
             </el-col>
           </el-row>
         </el-form-item>
         <el-form-item>
-          <el-button type="danger"
-                     @click="submitForm('loginForm')"
-                     class="block login-btn"
-                     :disabled="loginButtonStatus">{{model ==='login'?"登录":"注册"}}</el-button>
+          <el-button type="danger" @click="submitForm('loginForm')" class="block login-btn" :disabled="loginButtonStatus">{{model ==='login'?"登录":"注册"}}</el-button>
         </el-form-item>
       </el-form>
     </div>

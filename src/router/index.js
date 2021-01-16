@@ -104,7 +104,29 @@ const routes = [{
             component: () =>
                 import ("../views/User/index.vue")
         }]
-    }
+    },
+    {
+        path: "/page404",
+        name: "page404",
+        hidden: true,
+        meta: {
+            name: "404",
+            icon: 'el-icon-s-tools'
+        },
+        // which is lazy-loaded when the route is visited.懒加载
+        component: Layout,
+        children: [{
+            path: "/404",
+            name: "404",
+            meta: {
+                name: "404",
+                icon: 'el-icon-s-tools'
+            },
+            component: () =>
+                import ("../views/404.vue")
+        }]
+    },
+    { path: "*", redirect: "/404", hidden: true, },
 ];
 const router = new VueRouter({
     routes
